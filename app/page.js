@@ -1,69 +1,132 @@
-import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main className="min-h-screen bg-slate-950 text-white">
+      {/* Navbar */}
+      <nav className="flex items-center justify-between px-8 py-6 md:px-16">
+        <h1 className="text-2xl font-bold text-violet-400">
+          LinkVault.
+        </h1>
+
+        <div className="hidden gap-8 text-sm text-slate-300 md:flex">
+          <a href="#home" className="hover:text-violet-400">Home</a>
+          <a href="#features" className="hover:text-violet-400">Features</a>
+          <a href="#about" className="hover:text-violet-400">About</a>
+        </div>
+
+        <div className="flex gap-3">
+          <a href="/login" className="rounded-lg px-4 py-2 hover:text-violet-400">
+            Login
+          </a>
+          <a href="/register" className="rounded-lg bg-violet-600 px-5 py-2 hover:bg-violet-700">
+            Get Started
+          </a>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section id="home" className="px-8 py-24 text-center md:px-16">
+        <p className="mb-5 text-sm font-semibold uppercase tracking-widest text-violet-400">
+          Your personal knowledge space
+        </p>
+
+        <h2 className="mx-auto max-w-4xl text-5xl font-bold leading-tight md:text-7xl">
+          Save Everything.
+          <span className="block text-violet-400">
+            Find Anything.
+          </span>
+        </h2>
+
+        <p className="mx-auto mt-7 max-w-2xl text-lg leading-8 text-slate-400">
+          Keep your favourite links, articles and videos in one
+          organized space. Save useful content and find it whenever
+          you need it.
+        </p>
+
+        <div className="mt-10 flex justify-center gap-4">
+          <a href="/register" className="rounded-lg bg-violet-600 px-7 py-3 font-semibold hover:bg-violet-700">
+            Start Organizing →
+          </a>
+          <a href="#features" className="rounded-lg border border-slate-700 px-7 py-3 hover:bg-slate-900">
+            Explore Features
+          </a>
+        </div>
+
+        {/* Preview */}
+        <div className="mx-auto mt-20 max-w-4xl rounded-2xl border border-slate-700 bg-slate-900 p-5 text-left shadow-2xl">
+          <div className="mb-5 flex gap-2">
+            <span className="h-3 w-3 rounded-full bg-red-400"></span>
+            <span className="h-3 w-3 rounded-full bg-yellow-400"></span>
+            <span className="h-3 w-3 rounded-full bg-green-400"></span>
+          </div>
+
+          <div className="rounded-xl bg-slate-800 p-6">
+            <p className="text-sm text-slate-400">Your Library</p>
+            <h3 className="mt-2 text-2xl font-semibold">Saved Resources</h3>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              <div className="rounded-lg bg-slate-700 p-4">
+                <p className="text-violet-300">Article</p>
+                <p className="mt-2 font-semibold">Learning Resources</p>
+              </div>
+              <div className="rounded-lg bg-slate-700 p-4">
+                <p className="text-violet-300">Video</p>
+                <p className="mt-2 font-semibold">Useful Tutorials</p>
+              </div>
+              <div className="rounded-lg bg-slate-700 p-4">
+                <p className="text-violet-300">Website</p>
+                <p className="mt-2 font-semibold">Developer Tools</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="bg-slate-900 px-8 py-20 md:px-16">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="text-center text-3xl font-bold">
+            Everything in One Place
+          </h2>
+          <p className="mt-4 text-center text-slate-400">
+            Make managing your saved resources easier.
           </p>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-4">
+            {[
+              ["🔖", "Save Links", "Keep useful links together."],
+              ["🏷️", "Organize", "Group resources using tags."],
+              ["🔍", "Search Easily", "Find saved content quickly."],
+              ["✨", "Quick Summaries", "Understand content faster."]
+            ].map(([icon, title, description]) => (
+              <div key={title} className="rounded-xl border border-slate-700 bg-slate-950 p-6">
+                <span className="text-3xl">{icon}</span>
+                <h3 className="mt-5 text-lg font-semibold">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  {description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="px-8 py-20 text-center">
+        <h2 className="text-3xl font-bold">Your Knowledge, Organized.</h2>
+        <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-400">
+          LinkVault helps students, researchers and professionals
+          manage useful online resources without losing track of them.
+        </p>
+        <a href="/register" className="mt-8 inline-block rounded-lg bg-violet-600 px-7 py-3 font-semibold hover:bg-violet-700">
+          Get Started
+        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-slate-800 px-8 py-7 text-center text-sm text-slate-500">
+        © 2026 LinkVault. Your personal knowledge space.
+      </footer>
+    </main>
   );
 }
