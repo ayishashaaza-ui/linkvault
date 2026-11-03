@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LinkVault
+
+LinkVault is a personal knowledge management platform that helps users save, organize, search, and manage useful links, articles, and learning resources in one place.
+
+## Features
+
+- Save useful links and resources.
+- Organize saved links by category.
+- Search saved resources by title or description.
+- Filter links by category.
+- Add and delete saved links.
+- View dashboard statistics.
+- Store saved links in the browser using localStorage.
+
+## Technologies Used
+
+- Next.js
+- React.js
+- JavaScript
+- Tailwind CSS
+- React Context API
+- localStorage
+- Git and GitHub
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ayishashaaza-ui/linkvault.git
+```
+
+### 2. Open the project folder
+
+```bash
+cd linkvault
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 5. Open in your browser
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Visit http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+- `app/` – Application pages
+- `components/` – Reusable React components
+- `context/` – Shared application state
+- `public/` – Static assets
 
-To learn more about Next.js, take a look at the following resources:
+## Data Storage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+LinkVault currently uses sample data and browser localStorage to store saved links. It does not require a backend or database.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Status
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The project is being developed as part of an academic milestone. Features and documentation may be updated as development continues.
