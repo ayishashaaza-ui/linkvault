@@ -1,12 +1,24 @@
 "use client";
 
 import { useLinks } from "../context/LinkContext";
+import Button from "./Button";
 
 export default function LinkCard({ link }) {
   const { deleteLink } = useLinks();
 
+  const handleDelete = () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this link?"
+    );
+
+    if (confirmDelete) {
+      deleteLink(link.id);
+    }
+  };
+
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-900 p-6">
+
       <div className="flex justify-between">
         <span className="rounded-full bg-violet-500/20 px-3 py-1 text-xs text-violet-300">
           {link.category}
@@ -26,6 +38,7 @@ export default function LinkCard({ link }) {
       </p>
 
       <div className="mt-5 flex items-center justify-between">
+
         <a
           href={link.url}
           target="_blank"
@@ -35,20 +48,14 @@ export default function LinkCard({ link }) {
           Open Resource →
         </a>
 
-        <button
-          onClick={() => {
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this link?"
-  );
-
-  if (confirmDelete) {
-    deleteLink(link.id);
-  }
-}}
-          className="text-sm text-red-400 hover:text-red-300"
+        <Button
+          variant="danger"
+          onClick={handleDelete}
+          className="text-sm"
         >
           Delete
-        </button>
+        </Button>
+
       </div>
     </div>
   );

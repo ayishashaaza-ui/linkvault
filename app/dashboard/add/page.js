@@ -1,9 +1,11 @@
-
 "use client";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLinks } from "../../../context/LinkContext";
+
+import FormInput from "../../../components/FormInput";
+import Button from "../../../components/Button";
 
 export default function AddLink() {
   const { addLink } = useLinks();
@@ -31,11 +33,18 @@ export default function AddLink() {
 
   return (
     <main className="min-h-screen bg-slate-950 p-6 text-white">
+
       <div className="mx-auto max-w-2xl">
-        <a href="/dashboard" className="text-violet-400">
+
+        {/* Back to Dashboard */}
+        <a
+          href="/dashboard"
+          className="text-violet-400 hover:underline"
+        >
           ← Back to Dashboard
         </a>
 
+        {/* Heading */}
         <h1 className="mb-2 mt-8 text-3xl font-bold">
           Add New Link
         </h1>
@@ -44,50 +53,58 @@ export default function AddLink() {
           Save a useful resource to your library.
         </p>
 
+        {/* Form */}
         <form
           onSubmit={handleSubmit}
           className="space-y-5 rounded-xl border border-slate-800 bg-slate-900 p-6"
         >
-          <div>
-            <label className="mb-2 block">Title</label>
-            <input
-              required
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Enter resource title"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
-            />
-          </div>
 
-          <div>
-            <label className="mb-2 block">URL</label>
-            <input
-              required
-              type="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://example.com"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
-            />
-          </div>
+          {/* Title - Reusable FormInput */}
+          <FormInput
+            label="Title"
+            name="title"
+            placeholder="Enter resource title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
 
+          {/* URL - Reusable FormInput */}
+          <FormInput
+            label="URL"
+            name="url"
+            type="url"
+            placeholder="https://example.com"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            required
+          />
+
+          {/* Description */}
           <div>
-            <label className="mb-2 block">Description</label>
+            <label className="mb-2 block text-sm font-medium text-slate-300">
+              Description
+            </label>
+
             <textarea
               required
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Write a short description"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-white outline-none focus:border-violet-500"
             />
           </div>
 
+          {/* Category */}
           <div>
-            <label className="mb-2 block">Category</label>
+            <label className="mb-2 block text-sm font-medium text-slate-300">
+              Category
+            </label>
+
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-white"
             >
               <option>Development</option>
               <option>Programming</option>
@@ -97,12 +114,16 @@ export default function AddLink() {
             </select>
           </div>
 
+          {/* Resource Type */}
           <div>
-            <label className="mb-2 block">Resource Type</label>
+            <label className="mb-2 block text-sm font-medium text-slate-300">
+              Resource Type
+            </label>
+
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3"
+              className="w-full rounded-lg border border-slate-700 bg-slate-950 p-3 text-white"
             >
               <option>Website</option>
               <option>Article</option>
@@ -111,12 +132,15 @@ export default function AddLink() {
             </select>
           </div>
 
-          <button
+          {/* Reusable Button */}
+          <Button
             type="submit"
-            className="w-full rounded-lg bg-violet-600 p-3 font-semibold hover:bg-violet-700"
+            variant="primary"
+            className="w-full p-3"
           >
             Save Link
-          </button>
+          </Button>
+
         </form>
       </div>
     </main>
