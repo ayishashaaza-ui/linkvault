@@ -33,7 +33,6 @@ export default function AddLink() {
 
   return (
     <main className="min-h-screen bg-slate-950 p-6 text-white">
-
       <div className="mx-auto max-w-2xl">
 
         {/* Back to Dashboard */}
@@ -59,7 +58,7 @@ export default function AddLink() {
           className="space-y-5 rounded-xl border border-slate-800 bg-slate-900 p-6"
         >
 
-          {/* Title - Reusable FormInput */}
+          {/* Title */}
           <FormInput
             label="Title"
             name="title"
@@ -69,7 +68,7 @@ export default function AddLink() {
             required
           />
 
-          {/* URL - Reusable FormInput */}
+          {/* URL */}
           <FormInput
             label="URL"
             name="url"
@@ -132,7 +131,7 @@ export default function AddLink() {
             </select>
           </div>
 
-          {/* Reusable Button */}
+          {/* Save Button */}
           <Button
             type="submit"
             variant="primary"

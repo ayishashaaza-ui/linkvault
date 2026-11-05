@@ -16,17 +16,17 @@ export default function Dashboard() {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All Links");
 
-  // Get categories
+  // Get all available categories
   const categories = [
     "All Links",
     ...new Set(links.map((link) => link.category)),
   ];
 
-  // Filter links
+  // Search and filter resources
   const filteredLinks = links.filter((link) => {
     const matchesSearch =
-      link.title.toLowerCase().includes(search.toLowerCase()) ||
-      link.description.toLowerCase().includes(search.toLowerCase());
+      (link.title || "").toLowerCase().includes(search.toLowerCase()) ||
+      (link.description || "").toLowerCase().includes(search.toLowerCase());
 
     const matchesCategory =
       selectedCategory === "All Links" ||
@@ -35,7 +35,7 @@ export default function Dashboard() {
     return matchesSearch && matchesCategory;
   });
 
-  // Calculate statistics
+  // Calculate dashboard statistics
   const totalCategories = new Set(
     links.map((link) => link.category)
   ).size;
@@ -46,24 +46,15 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white md:flex">
-
-      {/* Reusable Navigation */}
       <Navigation />
 
-      {/* Main Dashboard */}
       <section className="flex-1 p-6 md:p-10">
 
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-4">
-
           <div>
-            <p className="text-sm text-slate-400">
-              Your Library
-            </p>
-
-            <h1 className="mt-2 text-3xl font-bold">
-              Dashboard
-            </h1>
+            <p className="text-sm text-slate-400">Your Library</p>
+            <h1 className="mt-2 text-3xl font-bold">Dashboard</h1>
           </div>
 
           <Link
@@ -72,7 +63,6 @@ export default function Dashboard() {
           >
             + Add New Link
           </Link>
-
         </div>
 
         {/* Search Bar */}
@@ -81,54 +71,53 @@ export default function Dashboard() {
           onChange={(e) => setSearch(e.target.value)}
         />
 
-        {/* Statistics Cards */}
+        {/* Statistics */}
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <StatsCard title="Total Links" value={links.length} />
+          <StatsCard title="Categories" value={totalCategories} />
+          <StatsCard title="Websites" value={totalWebsites} />
+        </div>
 
-          <StatsCard
-            title="Total Links"
-            value={links.length}
-          />
+        {/* Category Filter */}
+        <div className="mt-8">
+          <h2 className="mb-4 text-lg font-semibold">
+            Filter by Category
+          </h2>
 
-          <StatsCard
-            title="Categories"
-            value={totalCategories}
-          />
-
-          <StatsCard
-            title="Websites"
-            value={totalWebsites}
-          />
-
+          <div className="flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-lg px-4 py-2 font-medium transition ${
+                  selectedCategory === category
+                    ? "bg-violet-600 text-white"
+                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Saved Resources */}
         <div className="mt-10">
-
           <h2 className="mb-6 text-xl font-bold">
             Saved Resources
           </h2>
 
           {filteredLinks.length === 0 ? (
-
             <p className="text-slate-400">
               No resources found.
             </p>
-
           ) : (
-
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-
               {filteredLinks.map((link) => (
-                <LinkCard
-                  key={link.id}
-                  link={link}
-                />
+                <LinkCard key={link.id} link={link} />
               ))}
-
             </div>
-
           )}
-
         </div>
 
       </section>
