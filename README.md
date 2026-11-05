@@ -1,16 +1,21 @@
 # LinkVault
 
+## Project Overview
+
 LinkVault is a personal knowledge management platform that helps users save, organize, search, and manage useful links, articles, and learning resources in one place.
+
+It provides a centralized dashboard where users can easily access and manage their saved resources.
 
 ## Features
 
-- Save useful links and resources.
+- Save useful links and learning resources.
 - Organize saved links by category.
-- Search saved resources by title or description.
-- Filter links by category.
+- Search resources by title or description.
+- Filter saved links by category.
 - Add and delete saved links.
 - View dashboard statistics.
 - Store saved links in the browser using localStorage.
+- Reusable React components for a consistent user interface.
 
 ## Technologies Used
 
@@ -19,10 +24,12 @@ LinkVault is a personal knowledge management platform that helps users save, org
 - JavaScript
 - Tailwind CSS
 - React Context API
-- localStorage
+- Browser localStorage
 - Git and GitHub
 
 ## Getting Started
+
+Follow these steps to run the project locally.
 
 ### 1. Clone the repository
 
@@ -42,7 +49,7 @@ cd linkvault
 npm install
 ```
 
-### 4. Run the development server
+### 4. Start the development server
 
 ```bash
 npm run dev
@@ -50,19 +57,34 @@ npm run dev
 
 ### 5. Open in your browser
 
-Visit http://localhost:3000
+Visit:
+
+http://localhost:3000
 
 ## Project Structure
 
-- `app/` – Application pages
-- `components/` – Reusable React components
-- `context/` – Shared application state
-- `public/` – Static assets
+```text
+linkvault/
+├── app/             # Application pages
+├── components/      # Reusable React components
+├── context/         # Shared application state
+├── public/          # Static assets
+├── package.json     # Project dependencies
+└── README.md        # Project documentation
+```
 
 ## Data Storage
 
-LinkVault currently uses sample data and browser localStorage to store saved links. It does not require a backend or database.
+LinkVault currently uses browser localStorage to store saved links. It does not require a backend server or database.
+
+## Screenshots
+
+### Dashboard
+![Dashboard](public/screenshots/dashboard.png)
+
+### Add New Link
+![Add New Link](public/screenshots/add-link.png)
 
 ## Project Status
 
-The project is being developed as part of an academic milestone. Features and documentation may be updated as development continues.
+This project is being developed as part of an academic milestone. Features and documentation may be updated as development continues.
